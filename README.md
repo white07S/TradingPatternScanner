@@ -17,6 +17,18 @@
 # New and Unique:
 * **No other python** library exists for such task currently: This library is new and unique, as it aims to provide an all-in-one solution for identifying various trading patterns.
 
+
+### Lets check if its works for simplicity I used finviz and checked the pattern with the respective stock.
+
+* Head and Shoulder:
+![Head and Shoulder](https://user-images.githubusercontent.com/58583011/212490681-6dfca525-cd2e-4c87-830a-655ac9294a8a.png)
+
+We can see that it finds out that we have inverse head and shoulder pattern in the stock on 9th Januray 2023 in 1 day interval. Lets match with Finviz.
+![Finviz](https://user-images.githubusercontent.com/58583011/212490765-220182a5-e637-4f83-9a65-3031b7c99fee.png)
+
+* We can see that Finviz also detects on 9th Januray 2023 in 1 day interval.
+* You can adjust the window size to your liking. A smaller window size will be more sensitive to detecting patterns, but it will also increase the chances of false positives. A larger window size will be less sensitive to detecting patterns, but it will also decrease the chances of false positives.
+
 # Future add-ons:
 * **Request your favourite pattern to get added in the list**: The library is open for suggestions for adding new patterns.
 * **Work on visualization and plotting**: The library can be extended to include visualization and plotting features to help users better understand the patterns identified.

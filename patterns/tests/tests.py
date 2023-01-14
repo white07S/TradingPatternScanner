@@ -1,5 +1,6 @@
 import unittest
-from generate_data import generate_sample_df_with_pattern
+
+from utils.hard_data import generate_sample_df_with_pattern
 from patterns import detect_head_shoulder
 
 class TestHeadShoulderDetection(unittest.TestCase):

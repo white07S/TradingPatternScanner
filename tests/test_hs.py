@@ -1,5 +1,5 @@
-from src.TradingPatternScanner.hard_data import generate_sample_df_with_pattern
-from src.TradingPatternScanner.patterns import detect_head_shoulder
+from tradingpatterns.src.hard_data import generate_sample_df_with_pattern
+from tradingpatterns.src.tradingpatterns import detect_head_shoulder
 
 def test_detect_head_shoulder():
     # Generate data with head and shoulder pattern

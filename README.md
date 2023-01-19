@@ -33,3 +33,4 @@ We can see that it finds out that we have inverse head and shoulder pattern in t
 * **Request your favourite pattern to get added in the list**: The library is open for suggestions for adding new patterns.
 * **Work on visualization and plotting**: The library can be extended to include visualization and plotting features to help users better understand the patterns identified.
 * **Add unit testing**: The library can be extended to include unit testing to ensure that the code is working as expected and to catch any bugs early on.
+* https://mega.nz/folder/tAdxwYYI#pL8lH69Zp7HUNW_C0wAndw/folder/YdsEyIAI

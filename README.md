@@ -19,7 +19,7 @@ To install use pip(still under progress):
 
 Or clone the repo:
 
-    $ git clone https://github.com/white07S/tradingpattern.git
+    $ https://github.com/white07S/TradingPatternScanner.git
     $ python setup.py install
     
 # TradingPatternScanner

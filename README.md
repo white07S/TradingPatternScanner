@@ -1,3 +1,27 @@
+patternscanner
+===============================
+
+version number: 0.0.1
+author: Preetam Sharma
+
+Overview
+--------
+
+Trading Pattern Scanner Identifies complex patterns like head and shoulder, wedge and many more.
+
+Installation / Usage
+--------------------
+
+To install use pip(still under progress):
+
+    $ pip install tradingpattern
+
+
+Or clone the repo:
+
+    $ git clone https://github.com/white07S/tradingpattern.git
+    $ python setup.py install
+    
 # TradingPatternScanner
 
 # Trading patterns:

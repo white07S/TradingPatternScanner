@@ -1,9 +1,6 @@
-TradingPatternScanner
+# TradingPatternScanner
 
-===============================
-
-version number: 0.0.2
-author: Preetam Sharma
+#### Author: Preetam Sharma
 
 Overview
 --------

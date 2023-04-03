@@ -160,3 +160,29 @@ def detect_trendline(df, window=2):
     df.loc[mask_resistance, 'resistance'] = df['Close'] * df['slope'] + df['intercept']
 
     return df
+
+def find_pivots(df):
+    # Calculate differences between consecutive highs and lows
+    high_diffs = df['high'].diff()
+    low_diffs = df['low'].diff()
+
+    # Find higher high
+    higher_high_mask = (high_diffs > 0) & (high_diffs.shift(-1) < 0)
+    
+    # Find lower low
+    lower_low_mask = (low_diffs < 0) & (low_diffs.shift(-1) > 0)
+
+    # Find lower high
+    lower_high_mask = (high_diffs < 0) & (high_diffs.shift(-1) > 0)
+
+    # Find higher low
+    higher_low_mask = (low_diffs > 0) & (low_diffs.shift(-1) < 0)
+
+    # Create signals column
+    df['signal'] = ''
+    df.loc[higher_high_mask, 'signal'] = 'HH'
+    df.loc[lower_low_mask, 'signal'] = 'LL'
+    df.loc[lower_high_mask, 'signal'] = 'LH'
+    df.loc[higher_low_mask, 'signal'] = 'HL'
+
+    return df

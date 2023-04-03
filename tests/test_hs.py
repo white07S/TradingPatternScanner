@@ -9,3 +9,5 @@ def test_detect_head_shoulder():
     df_with_inv_detection = detect_head_shoulder(df_inv_shoulder)
     assert "Head and Shoulder" in df_with_detection['head_shoulder_pattern'].values
     assert "Inverse Head and Shoulder" in df_with_inv_detection['head_shoulder_pattern'].values
+
+

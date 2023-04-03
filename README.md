@@ -31,6 +31,7 @@ Or clone the repo:
 * **Channel up and down**: These patterns indicate a strong trend in the market, with price moving within a well-defined upper and lower trendline.
 * **Double top and bottom**: These patterns indicate a potential reversal in the market, with the market hitting a high or low twice and then reversing.
 * **Trend line support and resistance**: These patterns indicate key levels at which the market is likely to experience support or resistance based on historical price action.
+* **Finding Higher-High and Lower-Low**
 
 # Designed for fast performance:
 * **Uses only Pandas as Numpy, no other external libraries**: This approach helps to keep the library lightweight and fast.

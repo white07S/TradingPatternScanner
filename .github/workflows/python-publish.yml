@@ -25,10 +25,13 @@ jobs:
           poetry version patch
           echo "::set-output version=$(poetry version -s)"
       - name: Commit and push changes
-        uses: devops-infra/action-commit-push@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          commit_message: ${{ steps.versionUpdate.version }} release
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "github-actions@users.noreply.github.com"
+          git pull origin main
+          git add .
+          git commit -m "${{ steps.versionUpdate.outputs.version }} release"
+          git push origin main
       - name: Build and upload python package
         env:
           username: ${{ secrets.PYPI_USERNAME }}

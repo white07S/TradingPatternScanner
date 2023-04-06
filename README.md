@@ -1,4 +1,5 @@
 # TradingPatternScanner
+![Python CI](https://github.com/white07S/TradingPatternScanner/actions/workflows/python-ci.yml/badge.svg)
 
 #### Author: Preetam Sharma
 

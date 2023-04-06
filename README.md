@@ -11,15 +11,10 @@ Trading Pattern Scanner Identifies complex patterns like head and shoulder, wedg
 Installation / Usage
 --------------------
 
-To install use pip(still under progress):
+Install using pip:
 
     $ pip install tradingpattern
 
-
-Or clone the repo:
-
-    $ https://github.com/white07S/TradingPatternScanner.git
-    $ python setup.py install
     
 # TradingPatternScanner
 

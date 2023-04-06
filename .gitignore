@@ -38,3 +38,6 @@ docs/_build
 
 # Cookiecutter
 output/
+
+# Build
+dist/

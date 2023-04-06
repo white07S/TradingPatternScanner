@@ -41,3 +41,4 @@ output/
 
 # Build
 dist/
+venv/

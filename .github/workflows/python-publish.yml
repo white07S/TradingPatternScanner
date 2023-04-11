@@ -3,7 +3,6 @@ name: Upload Python Package to PYPI
 on:
   pull_request:
     branches: main
-    types: closed
 
 permissions:
   contents: write

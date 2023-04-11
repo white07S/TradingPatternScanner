@@ -28,7 +28,8 @@ jobs:
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "github-actions@users.noreply.github.com"
-          git pull origin main
+          git fetch origin main
+          git rebase origin/main
           git add .
           git commit -m "${{ steps.versionUpdate.outputs.version }} release"
           git push origin main

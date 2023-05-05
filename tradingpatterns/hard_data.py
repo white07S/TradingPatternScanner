@@ -17,9 +17,13 @@ def generate_sample_df_with_pattern(pattern):
     elif pattern == "Double Top" or "Double Bottom" or "Ascending Triangle" or "Descending Triangle":
         data['High'] = [95, 90, 85, 95, 90, 85, 80, 85, 90, 95]
         data['Low'] = [80, 75, 70, 80, 75, 70, 65, 70, 75, 80]
+        data['Close'] = [90, 85, 80, 90, 85, 80, 75, 80, 85, 90]
+        data['Open'] = [80, 75, 70, 80, 75, 70, 65, 70, 75, 80]
+        data['Volume'] = [1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000]
         df = pd.DataFrame(data)
         df.iloc[3:5,1] =100
         df.iloc[6:8,1] =70
         df.iloc[6:9,2] =70
+        return df
     df = pd.DataFrame(data)
     return df

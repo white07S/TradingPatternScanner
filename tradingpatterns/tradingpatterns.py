@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 def detect_head_shoulder(df, window=3):
@@ -70,14 +71,25 @@ def detect_triangle_pattern(df, window=3):
     df.loc[mask_desc, 'triangle_pattern'] = 'Descending Triangle'
     return df
 
+def trend_function(x):
+    last_index = len(x) - 1 # not -1 anymore
+    if last_index == 0:
+        return 0
+    diff = x.iat[last_index] - x.iat[0]
+    if diff > 0:
+        return 1
+    elif diff < 0:
+        return -1
+    else:
+        return 0
 def detect_wedge(df, window=3):
     # Define the rolling window
     roll_window = window
     # Create a rolling window for High and Low
     df['high_roll_max'] = df['High'].rolling(window=roll_window).max()
     df['low_roll_min'] = df['Low'].rolling(window=roll_window).min()
-    df['trend_high'] = df['High'].rolling(window=roll_window).apply(lambda x: 1 if (x[-1]-x[0])>0 else -1 if (x[-1]-x[0])<0 else 0)
-    df['trend_low'] = df['Low'].rolling(window=roll_window).apply(lambda x: 1 if (x[-1]-x[0])>0 else -1 if (x[-1]-x[0])<0 else 0)
+    df['trend_high'] = df['High'].rolling(window=roll_window).apply(trend_function)
+    df['trend_low'] = df['Low'].rolling(window=roll_window).apply(trend_function)
     # Create a boolean mask for Wedge Up pattern
     mask_wedge_up = (df['high_roll_max'] >= df['High'].shift(1)) & (df['low_roll_min'] <= df['Low'].shift(1)) & (df['trend_high'] == 1) & (df['trend_low'] == 1)
     # Create a boolean mask for Wedge Down pattern
@@ -96,8 +108,8 @@ def detect_channel(df, window=3):
     # Create a rolling window for High and Low
     df['high_roll_max'] = df['High'].rolling(window=roll_window).max()
     df['low_roll_min'] = df['Low'].rolling(window=roll_window).min()
-    df['trend_high'] = df['High'].rolling(window=roll_window).apply(lambda x: 1 if (x[-1]-x[0])>0 else -1 if (x[-1]-x[0])<0 else 0)
-    df['trend_low'] = df['Low'].rolling(window=roll_window).apply(lambda x: 1 if (x[-1]-x[0])>0 else -1 if (x[-1]-x[0])<0 else 0)
+    df['trend_high'] = df['High'].rolling(window=roll_window).apply(trend_function)
+    df['trend_low'] = df['Low'].rolling(window=roll_window).apply(trend_function)
     # Create a boolean mask for Channel Up pattern
     mask_channel_up = (df['high_roll_max'] >= df['High'].shift(1)) & (df['low_roll_min'] <= df['Low'].shift(1)) & (df['high_roll_max'] - df['low_roll_min'] <= channel_range * (df['high_roll_max'] + df['low_roll_min'])/2) & (df['trend_high'] == 1) & (df['trend_low'] == 1)
     # Create a boolean mask for Channel Down pattern
@@ -186,3 +198,47 @@ def find_pivots(df):
     df.loc[higher_low_mask, 'signal'] = 'HL'
 
     return df
+
+def detect_patterns(df, window=3, threshold=0.05):
+    # Define the rolling window
+    dfs = detect_head_shoulder(df, window)
+    dfs = detect_multiple_tops_bottoms(dfs, window)
+    dfs = detect_triangle_pattern(dfs, window)
+    dfs = detect_wedge(dfs, window)
+    dfs = detect_channel(dfs, window)
+    dfs = detect_double_top_bottom(dfs, window, threshold)
+    dfs = detect_trendline(dfs, window)
+    return dfs
+
+def plot_patterns(df):
+
+    # create figure
+    plt.figure()
+
+    # define width of candlestick elements
+    width = 0.2
+    width2 = .05
+
+    # define up and down prices
+    up = df[df['Close'] >= df['Open']]
+    down = df[df['Close'] < df['Open']]
+
+    # define colors to use
+    col1 = 'green'
+    col2 = 'red'
+
+    # plot up prices
+    plt.bar(up['date'], up['Close'] - up['Open'], width, bottom=up['Open'], color=col1)
+    plt.bar(up['date'], up['High'] - up['Close'], width2, bottom=up['Close'], color=col1)
+    plt.bar(up['date'], up['Low'] - up['Open'], width2, bottom=up['Open'], color=col1)
+
+    # plot down prices
+    plt.bar(down['date'], down['Close'] - down['Open'], width, bottom=down['Open'], color=col2)
+    plt.bar(down['date'], down['High'] - down['Open'], width2, bottom=down['Open'], color=col2)
+    plt.bar(down['date'], down['Low'] - down['Close'], width2, bottom=down['Close'], color=col2)
+
+    # rotate x-axis tick labels
+    plt.xticks(rotation=45, ha='right')
+
+    # display candlestick chart
+    plt.show()

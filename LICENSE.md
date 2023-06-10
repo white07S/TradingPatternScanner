@@ -15,7 +15,6 @@ Under the following terms:
 
 - NonCommercial: You may not use the material for commercial purposes. This includes but is not limited to, selling the material, or using it to promote a product or service.
 
-- ShareAlike: If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original. This ensures that others can continue to use and build upon your work in the same way that you have.
 
 For more information, see the [Creative Commons website](https://creativecommons.org/licenses/by-nc-sa/4.0/) and the [legal code of the license](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode).
 

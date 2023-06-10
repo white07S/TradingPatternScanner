@@ -11,7 +11,7 @@ You are free to:
 
 Under the following terms:
 
-- Attribution: You must give appropriate credit, provide a link to the license, and indicate if changes were made. You must do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use. The credit should be given in the following format: "Original work by [Preetam Sharma] is licensed under CC BY-NC-SA 4.0 and can be found at [link to the original work]."
+- Attribution: You must give appropriate credit, provide a link to the license, and indicate if changes were made. You must do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use. The credit should be given in the following format: "Original work by [Preetam Sharma] is licensed under CC BY-NC-SA 4.0 and can be found at (https://github.com/white07S/TradingPatternScanner)."
 
 - NonCommercial: You may not use the material for commercial purposes. This includes but is not limited to, selling the material, or using it to promote a product or service.
 

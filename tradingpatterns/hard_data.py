@@ -23,3 +23,75 @@ def generate_sample_df_with_pattern(pattern):
         df.iloc[6:9,2] =70
     df = pd.DataFrame(data)
     return df
+
+
+import pandas as pd
+import numpy as np
+import random
+from datetime import datetime, timedelta
+
+# Function to generate random OHLCV data
+def generate_random_data(length):
+    close_values = np.random.randint(100, 200, length).tolist()
+    return {
+        'Open': [value - random.randint(0, 10) for value in close_values],
+        'High': [value + random.randint(0, 10) for value in close_values],
+        'Low': [value - random.randint(0, 10) for value in close_values],
+        'Close': close_values,
+        'Volume': np.random.randint(1000, 2000, length).tolist(),
+    }
+
+# Function to inject head and shoulders and inverse head and shoulders patterns
+def inject_patterns(data):
+    shoulder_height = random.randint(120, 140)
+    head_height = random.randint(150, 170)
+    inv_shoulder_depth = random.randint(60, 80)
+    inv_head_depth = random.randint(40, 60)
+    
+    # Left Shoulder
+    data['High'][3] = shoulder_height
+    data['Close'][3] = shoulder_height - random.randint(0, 5)
+    
+    # Head
+    data['High'][5] = head_height
+    data['Close'][5] = head_height - random.randint(0, 5)
+    
+    # Right Shoulder
+    data['High'][7] = shoulder_height
+    data['Close'][7] = shoulder_height - random.randint(0, 5)
+    
+    # Left Inverse Shoulder
+    data['Low'][13] = inv_shoulder_depth
+    data['Close'][13] = inv_shoulder_depth + random.randint(0, 5)
+    
+    # Inverse Head
+    data['Low'][15] = inv_head_depth
+    data['Close'][15] = inv_head_depth + random.randint(0, 5)
+    
+    # Right Inverse Shoulder
+    data['Low'][17] = inv_shoulder_depth
+    data['Close'][17] = inv_shoulder_depth + random.randint(0, 5)
+    
+    return data
+
+def generate_data_head_shoulder(n):
+    # Start date
+    start_date = datetime.now()
+
+    # Dataframe for storing data
+    df = pd.DataFrame()
+
+    # Generate n Head and Shoulders patterns
+    for i in range(n):
+        data = generate_random_data(20)  # 20 data points are needed for one full pattern
+        data = inject_patterns(data)
+        
+        temp_df = pd.DataFrame(data)
+        temp_df['Datetime'] = pd.date_range(start=start_date, periods=20, freq='D')  # Adjust the frequency accordingly
+        start_date += timedelta(days=20)  # Adjust the timedelta accordingly
+        
+        df = df.append(temp_df, ignore_index=True)
+
+    df = df[['Datetime', 'Open', 'High', 'Low', 'Close', 'Volume']]
+
+    return df

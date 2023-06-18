@@ -8,6 +8,37 @@ Overview
 
 Trading Pattern Scanner Identifies complex patterns like head and shoulder, wedge and many more.
 
+## New Enhancements
+Four new features for pattern detection have been added:
+
+1. **Basic Head-Shoulder Detection**: The initial unfiltered version of pattern detection. It uses a rolling window to track high and low points, then identifies Head and Shoulder and Inverse Head and Shoulder patterns.
+2. **Head-Shoulder Detection with Savitzky-Golay Filter**: This feature uses the Savitzky-Golay filter to reduce noise and improve pattern detection. It also considers the height of the "Head" or "Inverse Head" to avoid false pattern recognition.
+3. **Head-Shoulder Detection with Kalman Filter**: This feature utilizes the Kalman Filter, a recursive filter that estimates the state of a system in real time. It's particularly suitable for financial data due to its inherent noise and uncertainties.
+4. **Head-Shoulder Detection with Wavelet Denoising**: This final feature applies wavelet denoising to eliminate noise while preserving key features in the data. It makes pattern detection more robust and reliable, especially in the presence of high-frequency noise.
+
+These enhancements provide more accurate pattern detection for your financial analysis needs.
+
+## Analysis
+Each method has been rigorously tested and analysed on **synthetic data that closely mirrors real-world financial data**. However, it's important to note that synthetic data is not an exact representation of the real-world, and the performance of each algorithm may vary in a live setting. Therefore, users are encouraged to test each algorithm against their own datasets and pick the one that best suits their needs. 
+- Accuracy for head_shoulder_pattern_window: 78.50%
+- Accuracy for head_shoulder_pattern_filter: 78.50%
+- Accuracy for head_shoulder_pattern_kf: 73.50%
+- Accuracy for head_shoulder_pattern_wavelet: 84.50%
+![Analysis](https://github.com/white07S/TradingPatternScanner/blob/main/docs/images/heatmap.png)
+
+## Heatmap Interpretation
+
+* For instance, let's consider a cell in the 2nd row and 2nd column. the score is 10, it means that a significant number of instances were correctly identified as "Head and Shoulder" pattern (abbreviated as HS).
+
+* On the contrary, a dark cell outside this diagonal indicates a high number of misclassifications. For example, a dark cell at the intersection of "HS" row and "I-HS" column would mean that a large number of instances were true "HS" but were incorrectly predicted as "Inverse Head and Shoulder" (abbreviated as I-HS) by the scanner.
+
+## Abbreviations
+The abbreviations used in the heatmap and the code are as follows:
+
+* **HS** - Head and Shoulder pattern
+* **I-HS** - Inverse Head and Shoulder pattern
+
+
 Installation / Usage
 --------------------
 

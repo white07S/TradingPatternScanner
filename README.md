@@ -20,10 +20,11 @@ These enhancements provide more accurate pattern detection for your financial an
 
 ## Analysis
 Each method has been rigorously tested and analysed on **synthetic data that closely mirrors real-world financial data**. However, it's important to note that synthetic data is not an exact representation of the real-world, and the performance of each algorithm may vary in a live setting. Therefore, users are encouraged to test each algorithm against their own datasets and pick the one that best suits their needs. 
-- Accuracy for head_shoulder_pattern_window: 78.50%
-- Accuracy for head_shoulder_pattern_filter: 78.50%
-- Accuracy for head_shoulder_pattern_kf: 73.50%
-- Accuracy for head_shoulder_pattern_wavelet: 84.50%
+- Accuracy for head_shoulder_pattern_window: **78.50%**
+- Accuracy for head_shoulder_pattern_filter: **78.50%**
+- Accuracy for head_shoulder_pattern_kf: **73.50%**
+- Accuracy for head_shoulder_pattern_wavelet: **84.50%**
+
 ![Analysis](https://github.com/white07S/TradingPatternScanner/blob/main/docs/images/heatmap.png)
 
 ## Heatmap Interpretation

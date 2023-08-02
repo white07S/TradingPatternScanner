@@ -29,13 +29,19 @@ jobs:
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "github-actions@users.noreply.github.com"
-          git pull origin main
+          git checkout -b release-${{ steps.versionUpdate.outputs.version }}
           git add .
           git commit -m "${{ steps.versionUpdate.outputs.version }} release"
-          git push origin main
+          git push origin release-${{ steps.versionUpdate.outputs.version }}
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          title: Release ${{ steps.versionUpdate.outputs.version }}
+          branch: release-${{ steps.versionUpdate.outputs.version }}
+          base: main
       - name: Build and upload python package
         env:
           username: ${{ secrets.PYPI_USERNAME }}
           password: ${{ secrets.PYPI_PASSWORD }}
         run: |
-          poetry publish --build -u ${username} -p ${password}
+          poetry publish --build -u ${username} -p ${password}}

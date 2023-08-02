@@ -108,7 +108,6 @@ In this algorithm, wavelet denoising is applied to the 'High' and 'Low' columns 
 the pattern detection process. Wavelet denoising is an effective technique for eliminating 
 noise while preserving the key features in the data. This can make the pattern detection process 
 more robust and reliable, especially in the presence of high frequency noise in the data. 
-Similar to the previous algorithms, the head-shoulder pattern detection is performed on the denoised data.
 '''
 
 def wavelet_denoise(series, wavelet='db1', level=1):
